@@ -420,7 +420,7 @@ Trong đó:
     \end{minipage}
 \end{figure}
 
-s\subsection{Random Forest (RF)}
+\subsection{Random Forest (RF)}
 Random Forest là một phương pháp học máy phổ biến được sử dụng vì tính linh hoạt, đơn giản và thường mang lại hiệu quả cao. Về bản chất thì Random Forest là tập hợp của nhiều cây quyết định, thay vì phụ thuộc vào một cây, nó lấy dự đoán từ mỗi cây và dựa trên đa số phiếu dự đoán, để đưa ra kết quả cuối cùng.
 
 Dưới đây là sơ đồ minh họa cho Xây dựng Cây quyết định:
@@ -480,7 +480,7 @@ Dưới đây là mô hình của Random Forest:
     \centering
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Cruide_Oil_73.png} 
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Cruide_Oil_73_Fix.png} 
     \caption{RF Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
@@ -488,7 +488,7 @@ Dưới đây là mô hình của Random Forest:
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Gasoline_RBOB_73.png}
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Gasoline_RBOB_73_Fix.png}
     \caption{RF Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
@@ -496,7 +496,7 @@ Dưới đây là mô hình của Random Forest:
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Heating_Oil_73.png}
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Heating_Oil_73_Fix.png}
     \caption{RF Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
@@ -554,7 +554,87 @@ Trong đó:
     \label{fig:3}
     \end{minipage}
 \end{figure}
+\subsection{Long short-term memory (LSTM)}
+LSTM là một loại đặc biệt của RNN với các tính năng bổ sung để ghi nhớ chuỗi dữ liệu. Việc ghi nhớ xu hướng trước đó của dữ liệu là có thể thông qua một số cổng cùng với một dòng bộ nhớ được tích hợp trong một LSTM điển hình.  
 
+Hình dưới đây biểu diễn khối bộ nhớ của LSTM:
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_pic.png} 
+    \caption{Khối bộ nhớ của một LSTM}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+  
+\end{figure}
+
+Ba loại cổng được tham gia vào mỗi LSTM với mục tiêu kiểm soát trạng thái của từng ô:
+
+\begin{itemize}
+    \item Cổng Quên xuất ra một số giữa 0 và 1, trong đó 1 cho thấy "hoàn toàn giữ lại điều này"; trong khi 0 ngụ ý "hoàn toàn bỏ qua điều này".
+    \item Cổng Bộ Nhớ chọn dữ liệu mới nào cần được lưu trữ trong ô. Đầu tiên, một lớp sigmoid, được gọi là "lớp cửa vào" chọn những giá trị nào sẽ được thay đổi. Tiếp theo, một lớp "tanh" tạo ra một vector các giá trị ứng viên mới có thể được thêm vào trạng thái.
+    \item Cổng Đầu Ra quyết định những gì sẽ được xuất ra từ mỗi ô. Giá trị xuất ra sẽ dựa trên trạng thái ô cùng với dữ liệu được lọc và thêm mới. 
+\end{itemize}
+
+ Cụ thể, biểu thức toán học của LSTM được viết như sau:
+ 
+1. Cổng Quên:
+\begin{equation}
+f_t = \sigma(W_{xf} x_t + W_{hf} h_{t-1} + b_f)
+\end{equation}
+
+2. Cổng Bộ Nhớ:
+\begin{equation}
+i_t = \sigma(W_{xi} x_t + W_{hi} h_{t-1} + b_i)
+\end{equation}
+
+3. Giá trị ứng viên mới:
+\begin{equation}
+\tilde{c}_t = \tanh(W_{xc} x_t + W_{hc} h_{t-1} + b_c)
+\end{equation}
+
+4. Trạng thái ô hiện tại:
+\begin{equation}
+c_t = f_t \ast c_{t-1} + i_t \ast \tilde{c}_t
+\end{equation}
+
+5. Cổng Đầu Ra:
+\begin{equation}
+o_t = \sigma(W_{xo} x_t + W_{ho} h_{t-1} + b_o)
+\end{equation}
+
+6. Đầu ra ô:
+\begin{equation}
+h_t = o_t \ast \tanh(c_t)
+\end{equation}
+
+Trong đó:
+- \( \sigma \) là hàm sigmoid
+
+- \( \tanh \) là hàm hyperbolic tangent
+
+- \( W \) là các ma trận trọng số
+
+- \( b \) là các hệ số bù
+
+- \( x_t \) là đầu vào tại thời điểm \( t \)
+
+- \( h_{t-1} \) là đầu ra của ô tại thời điểm \( t-1 \)
+
+- \( c_t \) là trạng thái ô tại thời điểm \( t \)
+
+- \( f_t \) là đầu ra của cổng quên
+
+- \( i_t \) là đầu ra của cổng bộ nhớ
+
+- \( o_t \) là đầu ra của cổng đầu ra
+
+- \( \tilde{c}_t \) là giá trị ứng viên mới cho trạng thái ô
+
+Trong các phương trình (1) đến (6), các biến đầu vào \( x_t \) và \( h_{t-1} \) đi vào bốn cổng được gán nhãn là \( f_t \), \( i_t \),\( c_t \), \( o_t \). Đối với các cổng đầu vào và đầu ra, các trọng số tương ứng với mỗi cổng được tính toán, và hàm sigmoid được sử dụng làm hàm kích hoạt. Hàm sigmoid lấy giá trị giữa 0 và 1. Nếu giá trị đầu ra là 1, giá trị tương ứng nên được giữ lại, nhưng nếu giá trị đầu ra là 0, giá trị tương ứng nên bị loại bỏ hoàn toàn. Đối với cổng còn lại, cổng điều chế đầu vào, hàm tanh được sử dụng để xác định lượng thông tin mới cần được phản ánh trong trạng thái ô. Cuối cùng, thông tin cần được phản ánh trong \( c_t \) được tính bằng cách cộng nhân điểm của các giá trị \( i_t \) đã tính toán trước đó và các giá trị được tính từ cổng quên, giá trị trạng thái ô trước đó, và nhân điểm của \( c_t \). Cuối cùng, để tính giá trị đầu ra \( h_t \), nhân điểm được thực hiện trên giá trị được tính từ cổng đầu ra và giá trị thu được bằng cách thêm hàm tanh vào giá trị trạng thái ô đã tính toán.
 
 
 
