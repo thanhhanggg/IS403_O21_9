@@ -694,6 +694,9 @@ Trong đó:
     \label{fig:3}
     \end{minipage}
 \end{figure}
+\subsection{Fully Convolutional Neural Networks (FCN)}
+
+Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xuất trong Wang et al. (2017b) để phân loại các chuỗi thời gian đơn biến và đã được xác thực trên 44 bộ dữ liệu từ kho lưu trữ UCR/UEA. FCN chủ yếu là các mạng nơ-ron chập không chứa bất kỳ lớp pooling cục bộ nào, điều này có nghĩa là độ dài của chuỗi thời gian được giữ nguyên trong suốt quá trình chập. Ngoài ra, một trong những đặc điểm chính của kiến trúc này là thay thế lớp Fully Connected (FC) truyền thống bằng một lớp Global Average Pooling (GAP), lớp này giúp giảm đáng kể số lượng tham số trong mạng nơ-ron trong khi vẫn cho phép sử dụng Class Activation Map (CAM) (Zhou et al., 2016) để làm nổi bật những phần của chuỗi thời gian đầu vào đóng góp nhiều nhất vào một phân loại nhất định.
 
 \section*{Acknowledgment}
 
