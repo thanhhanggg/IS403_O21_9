@@ -612,6 +612,7 @@ h_t = o_t \ast \tanh(c_t)
 \end{equation}
 
 Trong đó:
+
 - \( \sigma \) là hàm sigmoid
 
 - \( \tanh \) là hàm hyperbolic tangent
@@ -637,6 +638,94 @@ Trong đó:
 Trong các phương trình (1) đến (6), các biến đầu vào \( x_t \) và \( h_{t-1} \) đi vào bốn cổng được gán nhãn là \( f_t \), \( i_t \),\( c_t \), \( o_t \). Đối với các cổng đầu vào và đầu ra, các trọng số tương ứng với mỗi cổng được tính toán, và hàm sigmoid được sử dụng làm hàm kích hoạt. Hàm sigmoid lấy giá trị giữa 0 và 1. Nếu giá trị đầu ra là 1, giá trị tương ứng nên được giữ lại, nhưng nếu giá trị đầu ra là 0, giá trị tương ứng nên bị loại bỏ hoàn toàn. Đối với cổng còn lại, cổng điều chế đầu vào, hàm tanh được sử dụng để xác định lượng thông tin mới cần được phản ánh trong trạng thái ô. Cuối cùng, thông tin cần được phản ánh trong \( c_t \) được tính bằng cách cộng nhân điểm của các giá trị \( i_t \) đã tính toán trước đó và các giá trị được tính từ cổng quên, giá trị trạng thái ô trước đó, và nhân điểm của \( c_t \). Cuối cùng, để tính giá trị đầu ra \( h_t \), nhân điểm được thực hiện trên giá trị được tính từ cổng đầu ra và giá trị thu được bằng cách thêm hàm tanh vào giá trị trạng thái ô đã tính toán.
 
 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Cruide_Oil_73.png} 
+    \caption{LSTM Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Gasoline_RBOB_73.png}
+    \caption{LSTM Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Heating_Oil_73.png}
+    \caption{LSTM Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
+
+
+\subsection{Gated Recurrent Unit (GRU)}
+Gated Recurrent Unit (GRU) là một kiểu kiến trúc mạng nơ-ron hồi tiếp (RNN) được thiết kế để xử lý dữ liệu chuỗi. GRU được giới thiệu để giảm số lượng cổng so với mô hình Long Short-Term Memory (LSTM), giúp cho việc triển khai và huấn luyện trở nên đơn giản hơn. Dưới đây là một phần của kiến trúc GRU và các công thức tương ứng:
+
+1. Cổng cập nhập (Update Gate):
+Cổng cập nhật xác định bao nhiêu trạng thái ẩn trước
+đó sẽ được giữ lại và bao nhiêu thông tin mới sẽ được đưa vào.
+Nó được tính như sau:
+\begin{equation}
+z_t = \sigma(W_z \cdot [h_{t-1}, x_t] + b_z)
+\end{equation}
+Trong đó:
+\begin{itemize}
+ \item \( x_t \) là đầu vào tại thời điểm \( t \).
+ \item \( h_{t-1} \) là trạng thái ẩn tại thời điểm trước đó.
+ \item \( W_z \) là ma trận trọng số.
+ \item \( b_z \) là vector bias.
+ \item \( \sigma \) là hàm kích hoạt sigmoid.
+\end{itemize}
+2. Trạng thái cập nhật: Trạng thái ẩn ứng viên được tính dựa trên đầu vào hiện tại và trạng thái ẩn trước đó.
+\begin{equation}
+\tilde{h}_t = \text{tanh}(W_h \cdot [r_t \odot h_{t-1}, x_t] + b_h)
+\end{equation}
+Trong đó:
+\begin{itemize}
+ \item \( r_t \) là cổng reset.
+ \item \( \odot \) biểu thị phép nhân theo từng phần tử.
+\end{itemize}
+
+3. Cổng reset : Quyết định mức độ thông tin nào sẽ bị xóa khỏi trạng thái ẩn trước khi tính toán trạng thái ẩn hiện tại.
+\[ r_t = \sigma(W_r \cdot [h_{t-1}, x_t] + b_r) \]
+4. Trạng thái ẩn mới: Tích hợp thông tin từ trạng thái ẩn trước và trạng thái ẩn hiện tại để tạo ra trạng thái ẩn mới.
+   \[ h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t \]
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Crude Oil.png} 
+    \caption{Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Gasoline RBOB.png}
+    \caption{Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Heating Oil.png}
+    \caption{Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
+\subsection{Fully Convolutional Neural Networks (FCN)}
+
+Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xuất trong Wang et al. (2017b) để phân loại các chuỗi thời gian đơn biến và đã được xác thực trên 44 bộ dữ liệu từ kho lưu trữ UCR/UEA. FCN chủ yếu là các mạng nơ-ron chập không chứa bất kỳ lớp pooling cục bộ nào, điều này có nghĩa là độ dài của chuỗi thời gian được giữ nguyên trong suốt quá trình chập. Ngoài ra, một trong những đặc điểm chính của kiến trúc này là thay thế lớp Fully Connected (FC) truyền thống bằng một lớp Global Average Pooling (GAP), lớp này giúp giảm đáng kể số lượng tham số trong mạng nơ-ron trong khi vẫn cho phép sử dụng Class Activation Map (CAM) (Zhou et al., 2016) để làm nổi bật những phần của chuỗi thời gian đầu vào đóng góp nhiều nhất vào một phân loại nhất định.
 
 \section*{Acknowledgment}
 
