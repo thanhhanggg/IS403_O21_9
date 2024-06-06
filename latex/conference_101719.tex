@@ -302,7 +302,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \centering
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(Cruide_7_3).png} 
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Cruide_7_3.png} 
     \caption{Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
@@ -310,7 +310,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(GasOline_7_3).png} 
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Gao_7_3.png} 
     \caption{Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
@@ -318,7 +318,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(HeatingOil_7_3).png}
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Heating_7_3.png}
     \caption{Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
@@ -420,7 +420,7 @@ Trong đó:
     \end{minipage}
 \end{figure}
 
-s\subsection{Random Forest (RF)}
+\subsection{Random Forest (RF)}
 Random Forest là một phương pháp học máy phổ biến được sử dụng vì tính linh hoạt, đơn giản và thường mang lại hiệu quả cao. Về bản chất thì Random Forest là tập hợp của nhiều cây quyết định, thay vì phụ thuộc vào một cây, nó lấy dự đoán từ mỗi cây và dựa trên đa số phiếu dự đoán, để đưa ra kết quả cuối cùng.
 
 Dưới đây là sơ đồ minh họa cho Xây dựng Cây quyết định:
@@ -480,7 +480,7 @@ Dưới đây là mô hình của Random Forest:
     \centering
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Cruide_Oil_73.png} 
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Cruide_Oil_73_Fix.png} 
     \caption{RF Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
@@ -488,7 +488,7 @@ Dưới đây là mô hình của Random Forest:
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Gasoline_RBOB_73.png}
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Gasoline_RBOB_73_Fix.png}
     \caption{RF Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
@@ -496,7 +496,7 @@ Dưới đây là mô hình của Random Forest:
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RF/Heating_Oil_73.png}
+    \includegraphics[width=0.8\textwidth]{Picture/RF/Heating_Oil_73_Fix.png}
     \caption{RF Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
@@ -554,10 +554,204 @@ Trong đó:
     \label{fig:3}
     \end{minipage}
 \end{figure}
+\subsection{Long short-term memory (LSTM)}
+LSTM là một loại đặc biệt của RNN với các tính năng bổ sung để ghi nhớ chuỗi dữ liệu. Việc ghi nhớ xu hướng trước đó của dữ liệu là có thể thông qua một số cổng cùng với một dòng bộ nhớ được tích hợp trong một LSTM điển hình.  
+
+Hình dưới đây biểu diễn khối bộ nhớ của LSTM:
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_pic.png} 
+    \caption{Khối bộ nhớ của một LSTM}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+  
+\end{figure}
+
+Ba loại cổng được tham gia vào mỗi LSTM với mục tiêu kiểm soát trạng thái của từng ô:
+
+\begin{itemize}
+    \item Cổng Quên xuất ra một số giữa 0 và 1, trong đó 1 cho thấy "hoàn toàn giữ lại điều này"; trong khi 0 ngụ ý "hoàn toàn bỏ qua điều này".
+    \item Cổng Bộ Nhớ chọn dữ liệu mới nào cần được lưu trữ trong ô. Đầu tiên, một lớp sigmoid, được gọi là "lớp cửa vào" chọn những giá trị nào sẽ được thay đổi. Tiếp theo, một lớp "tanh" tạo ra một vector các giá trị ứng viên mới có thể được thêm vào trạng thái.
+    \item Cổng Đầu Ra quyết định những gì sẽ được xuất ra từ mỗi ô. Giá trị xuất ra sẽ dựa trên trạng thái ô cùng với dữ liệu được lọc và thêm mới. 
+\end{itemize}
+
+ Cụ thể, biểu thức toán học của LSTM được viết như sau:
+ 
+1. Cổng Quên:
+\begin{equation}
+f_t = \sigma(W_{xf} x_t + W_{hf} h_{t-1} + b_f)
+\end{equation}
+
+2. Cổng Bộ Nhớ:
+\begin{equation}
+i_t = \sigma(W_{xi} x_t + W_{hi} h_{t-1} + b_i)
+\end{equation}
+
+3. Giá trị ứng viên mới:
+\begin{equation}
+\tilde{c}_t = \tanh(W_{xc} x_t + W_{hc} h_{t-1} + b_c)
+\end{equation}
+
+4. Trạng thái ô hiện tại:
+\begin{equation}
+c_t = f_t \ast c_{t-1} + i_t \ast \tilde{c}_t
+\end{equation}
+
+5. Cổng Đầu Ra:
+\begin{equation}
+o_t = \sigma(W_{xo} x_t + W_{ho} h_{t-1} + b_o)
+\end{equation}
+
+6. Đầu ra ô:
+\begin{equation}
+h_t = o_t \ast \tanh(c_t)
+\end{equation}
+
+Trong đó:
+
+- \( \sigma \) là hàm sigmoid
+
+- \( \tanh \) là hàm hyperbolic tangent
+
+- \( W \) là các ma trận trọng số
+
+- \( b \) là các hệ số bù
+
+- \( x_t \) là đầu vào tại thời điểm \( t \)
+
+- \( h_{t-1} \) là đầu ra của ô tại thời điểm \( t-1 \)
+
+- \( c_t \) là trạng thái ô tại thời điểm \( t \)
+
+- \( f_t \) là đầu ra của cổng quên
+
+- \( i_t \) là đầu ra của cổng bộ nhớ
+
+- \( o_t \) là đầu ra của cổng đầu ra
+
+- \( \tilde{c}_t \) là giá trị ứng viên mới cho trạng thái ô
+
+Trong các phương trình (1) đến (6), các biến đầu vào \( x_t \) và \( h_{t-1} \) đi vào bốn cổng được gán nhãn là \( f_t \), \( i_t \),\( c_t \), \( o_t \). Đối với các cổng đầu vào và đầu ra, các trọng số tương ứng với mỗi cổng được tính toán, và hàm sigmoid được sử dụng làm hàm kích hoạt. Hàm sigmoid lấy giá trị giữa 0 và 1. Nếu giá trị đầu ra là 1, giá trị tương ứng nên được giữ lại, nhưng nếu giá trị đầu ra là 0, giá trị tương ứng nên bị loại bỏ hoàn toàn. Đối với cổng còn lại, cổng điều chế đầu vào, hàm tanh được sử dụng để xác định lượng thông tin mới cần được phản ánh trong trạng thái ô. Cuối cùng, thông tin cần được phản ánh trong \( c_t \) được tính bằng cách cộng nhân điểm của các giá trị \( i_t \) đã tính toán trước đó và các giá trị được tính từ cổng quên, giá trị trạng thái ô trước đó, và nhân điểm của \( c_t \). Cuối cùng, để tính giá trị đầu ra \( h_t \), nhân điểm được thực hiện trên giá trị được tính từ cổng đầu ra và giá trị thu được bằng cách thêm hàm tanh vào giá trị trạng thái ô đã tính toán.
 
 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Cruide_Oil_73.png} 
+    \caption{LSTM Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Gasoline_RBOB_73.png}
+    \caption{LSTM Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LSTM/LSTM_Heating_Oil_73.png}
+    \caption{LSTM Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
 
 
+\subsection{Gated Recurrent Unit (GRU)}
+Gated Recurrent Unit (GRU) là một kiểu kiến trúc mạng nơ-ron hồi tiếp (RNN) được thiết kế để xử lý dữ liệu chuỗi. GRU được giới thiệu để giảm số lượng cổng so với mô hình Long Short-Term Memory (LSTM), giúp cho việc triển khai và huấn luyện trở nên đơn giản hơn. Dưới đây là một phần của kiến trúc GRU và các công thức tương ứng:
+
+1. Cổng cập nhập (Update Gate):
+Cổng cập nhật xác định bao nhiêu trạng thái ẩn trước
+đó sẽ được giữ lại và bao nhiêu thông tin mới sẽ được đưa vào.
+Nó được tính như sau:
+\begin{equation}
+z_t = \sigma(W_z \cdot [h_{t-1}, x_t] + b_z)
+\end{equation}
+Trong đó:
+\begin{itemize}
+ \item \( x_t \) là đầu vào tại thời điểm \( t \).
+ \item \( h_{t-1} \) là trạng thái ẩn tại thời điểm trước đó.
+ \item \( W_z \) là ma trận trọng số.
+ \item \( b_z \) là vector bias.
+ \item \( \sigma \) là hàm kích hoạt sigmoid.
+\end{itemize}
+2. Trạng thái cập nhật: Trạng thái ẩn ứng viên được tính dựa trên đầu vào hiện tại và trạng thái ẩn trước đó.
+\begin{equation}
+\tilde{h}_t = \text{tanh}(W_h \cdot [r_t \odot h_{t-1}, x_t] + b_h)
+\end{equation}
+Trong đó:
+\begin{itemize}
+ \item \( r_t \) là cổng reset.
+ \item \( \odot \) biểu thị phép nhân theo từng phần tử.
+\end{itemize}
+
+3. Cổng reset : Quyết định mức độ thông tin nào sẽ bị xóa khỏi trạng thái ẩn trước khi tính toán trạng thái ẩn hiện tại.
+\[ r_t = \sigma(W_r \cdot [h_{t-1}, x_t] + b_r) \]
+4. Trạng thái ẩn mới: Tích hợp thông tin từ trạng thái ẩn trước và trạng thái ẩn hiện tại để tạo ra trạng thái ẩn mới.
+   \[ h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde{h}_t \]
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Crude Oil.png} 
+    \caption{Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Gasoline RBOB.png}
+    \caption{Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/GRU/Heating Oil.png}
+    \caption{Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
+\subsection{Fully Convolutional Neural Networks (FCN)}
+
+Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xuất trong Wang et al. (2017b) FCN là một loại mạng nơ-ron mà trong đó tất cả các lớp đều là lớp tích chập (convolutional layers), không có các lớp kết nối đầy đủ (fully connected layers). FCN thường được sử dụng cho các tác vụ như phân đoạn ảnh (image segmentation), trong đó đầu ra là một bản đồ đặc trưng với cùng kích thước không gian như đầu vào.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/FCN_Cruide_7_3.png} 
+    \caption{Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/FCN_Gao_7_3.png} 
+    \caption{Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/FCN_Heating_7_3.png}
+    \caption{Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
 \section*{Acknowledgment}
 
 The preferred spelling of the word ``acknowledgment'' in America is without 
