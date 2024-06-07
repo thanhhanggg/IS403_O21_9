@@ -302,7 +302,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \centering
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Cruide_7_3.png} 
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(Cruide_7_3).png} 
     \caption{Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
@@ -310,7 +310,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Gao_7_3.png} 
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(GasOline_7_3).png} 
     \caption{Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
@@ -318,7 +318,7 @@ Mô hình hồi quy tuyến tính bội có dạng:
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LN_Heating_7_3.png}
+    \includegraphics[width=0.8\textwidth]{Picture/LinearRegression/LinearRegressSion(HeatingOil_7_3).png}
     \caption{Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
@@ -723,6 +723,9 @@ Trong đó:
     \label{fig:3}
     \end{minipage}
 \end{figure}
+\subsection{Fully Convolutional Neural Networks (FCN)}
+
+Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xuất trong Wang et al. (2017b) để phân loại các chuỗi thời gian đơn biến và đã được xác thực trên 44 bộ dữ liệu từ kho lưu trữ UCR/UEA. FCN chủ yếu là các mạng nơ-ron chập không chứa bất kỳ lớp pooling cục bộ nào, điều này có nghĩa là độ dài của chuỗi thời gian được giữ nguyên trong suốt quá trình chập. Ngoài ra, một trong những đặc điểm chính của kiến trúc này là thay thế lớp Fully Connected (FC) truyền thống bằng một lớp Global Average Pooling (GAP), lớp này giúp giảm đáng kể số lượng tham số trong mạng nơ-ron trong khi vẫn cho phép sử dụng Class Activation Map (CAM) (Zhou et al., 2016) để làm nổi bật những phần của chuỗi thời gian đầu vào đóng góp nhiều nhất vào một phân loại nhất định.
 
 \subsection{Recurrent Neural Network (RNN)}
 Recurrent Neural Network (RNN) là một kiến trúc mạng nơ-ron nhân tạo trong Deep learning, được thiết kế để xử lý dữ liệu tuần tự hoặc chuỗi dữ liệu. RNN có khả năng lưu giữ trạng thái trước đó của một chuỗi đầu vào và sử dụng thông tin đó để tính toán đầu ra tiếp theo.
@@ -784,35 +787,7 @@ Quá trình này được lặp lại cho tất cả các chuỗi đầu vào tr
     \end{minipage}
 \end{figure}
 
-\subsection{Fully Convolutional Neural Networks (FCN)}
 
-Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xuất trong Wang et al. (2017b) FCN là một loại mạng nơ-ron mà trong đó tất cả các lớp đều là lớp tích chập (convolutional layers), không có các lớp kết nối đầy đủ (fully connected layers). FCN thường được sử dụng cho các tác vụ như phân đoạn ảnh (image segmentation), trong đó đầu ra là một bản đồ đặc trưng với cùng kích thước không gian như đầu vào.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.3\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{Picture/FCN/FCN_Cruide_7_3.png} 
-    \caption{Crude Oil WTI 7:3}
-    \label{fig:1}
-    \end{minipage}
-    \hfill
-    \\
-    \begin{minipage}{0.3\textwidth} 
-    \centering
-    \includegraphics[width=0.8\textwidth]{Picture/FCN/FCN_Gao_7_3.png} 
-    \caption{Gasoline RBOB 7:3}
-    \label{fig:2}
-    \end{minipage}
-    \hfill
-    \\
-    \begin{minipage}{0.3\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{Picture/FCN/FCN_Heating_7_3.png}
-    \caption{Heating Oil 7:3}
-    \label{fig:3}
-    \end{minipage}
-\end{figure}
 \section*{Acknowledgment}
 
 The preferred spelling of the word ``acknowledgment'' in America is without 
