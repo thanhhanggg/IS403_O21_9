@@ -753,6 +753,61 @@ Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xu�
     \label{fig:3}
     \end{minipage}
 \end{figure}
+\subsection{Recurrent Neural Network (RNN)}
+Recurrent Neural Network (RNN) là một kiến trúc mạng nơ-ron nhân tạo trong Deep learning, được thiết kế để xử lý dữ liệu tuần tự hoặc chuỗi dữ liệu. RNN có khả năng lưu giữ trạng thái trước đó của một chuỗi đầu vào và sử dụng thông tin đó để tính toán đầu ra tiếp theo.
+
+ RNN có một số ưu điểm để dự đoán chuỗi thời gian (time-series). Chúng có thể xử lý dữ liệu theo chuỗi có độ dài khác nhau, nắm bắt hiệu quả các phụ thuộc lâu dài và mô hình thời gian. RNN dễ dàng thích ứng với các khoảng thời gian không đều nhau hay các tác vụ dự báo khác nhau với các chuỗi input và output có độ dài khác nhau.
+\subsection{Recurrent Neural Network (RNN)}
+Recurrent Neural Network (RNN) là một kiến trúc mạng nơ-ron nhân tạo trong Deep learning, được thiết kế để xử lý dữ liệu tuần tự hoặc chuỗi dữ liệu. RNN có khả năng lưu giữ trạng thái trước đó của một chuỗi đầu vào và sử dụng thông tin đó để tính toán đầu ra tiếp theo.
+
+Công thức mô hình trạng thái ẩn tại thời điểm \( t \):
+\[ H_t = f(U \cdot X_t + W \cdot H_{t-1} + b) \]
+
+Biết được trạng thái ẩn \( H_t \) của thời điểm hiện tại, công thức tính toán giá trị đầu ra dự đoán \( Y_t \) của RNN tại thời điểm hiện tại như sau: 
+\[ Y_t = g(V \cdot H_t + c) \]
+
+Trong đó:
+\begin{itemize}
+    \item \( X_t \) là đầu vào tại thời điểm \( t \)
+    \item \( Y_t \) là đầu ra tại thời điểm \( t \)
+    \item \( H_t \) là trạng thái ẩn tại thời điểm \( t \)
+    \item \( U \) là ma trận trọng số liên kết giữa đầu vào và trạng thái ẩn
+    \item \( W \) là ma trận trọng số liên kết giữa trạng thái ẩn tại thời điểm trước đó và trạng thái ẩn tại thời điểm hiện tại
+    \item \( V \) là ma trận trọng số liên kết giữa trạng thái ẩn và đầu ra
+    \item \( b \) và \( c \) là vector độ lệch (bias)
+    \item \( f \) và \( g \) là hàm kích hoạt
+\end{itemize}
+
+
+RNN sử dụng các thuật toán tối ưu hoá (Optimization algorithm) để tối thiểu hóa độ lỗi (loss) bằng cách cập nhật lại các tham số của mạng (bao gồm các ma trận trọng số và vector độ lệch) thông qua việc tính toán đạo hàm (Gradient) của hàm mất mát (Loss function) theo các tham số trên và di chuyển theo hướng ngược lại với gradient theo một tỷ lệ học (learning rate) xác định.
+
+Quá trình này được lặp lại cho tất cả các chuỗi đầu vào trong quá trình huấn luyện mạng RNN.
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/RNN/Cruide_7_3.png} 
+    \caption{Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/RNN/Gasoline_7_3.png} 
+    \caption{Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Picture/RNN/Heating_7_3.png}
+    \caption{Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
+
 \section*{Acknowledgment}
 
 The preferred spelling of the word ``acknowledgment'' in America is without 
