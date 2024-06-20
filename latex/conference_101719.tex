@@ -10,49 +10,50 @@
 \usepackage[utf8]{inputenc}
 \usepackage[vietnamese]{babel}
 \usepackage{amsmath}
-\usepackage{float} % Sử dụng gói lệnh float để kiểm soát vị trí của hình ảnh
+\usepackage{float} 
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{tabularx} % For adjusting table width
+\usepackage{longtable} % For tables that span multiple pages
+\usepackage{adjustbox}
+\usepackage{changepage}
+\usepackage{xcolor}
+
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Conference Paper Title*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\title{Dự báo giá của các loại nhiên liệu sử dụng các kĩ thuật phân tích chuỗi thời gian\\
 }
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Lê Thị Thanh Hằng}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\IEEEauthorblockA{\textit{Trường đại học Công nghệ thông tin
+ } \\
+\textit{IS403.021}\\
+21520222@gm.uit.edu.vn}
 \and
 \IEEEauthorblockN{2\textsuperscript{nd} Ngô Tất Tố}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\IEEEauthorblockA{\textit{Trường đại học Công nghệ thông tin} \\
+\textit{IS403.021}\\
+21520484@gm.uit.edu.vn}
 \and
 \IEEEauthorblockN{3\textsuperscript{rd} Nguyễn Nhật Phương Huy}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\IEEEauthorblockA{\textit{Trường đại học Công nghệ thông tin} \\
+\textit{IS403.021}\\
+21522156@gm.uit.edu.vn}
 \and
-\hspace{2cm}
+\hspace{2.5cm}
 \IEEEauthorblockN{4\textsuperscript{th} Lê Xuân Thạch}
-\IEEEauthorblockA{\hspace{2.5cm}\textit{dept. Name of Organization (of Affiliation)} \\
-\hspace{2.5cm}\textit{Name of Organization (of Affiliation)}\\
-\hspace{2.5cm}City, Country \\
-\hspace{2.5cm}Email Address or ORCID}
+\IEEEauthorblockA{\hspace{2.5cm}\textit{Trường đại học Công nghệ thông tin} \\
+\hspace{2.5cm}\textit{IS403.021}\\
+\hspace{2.5cm}21521421@gm.uit.edu.vn}
 \and
 \IEEEauthorblockN{5\textsuperscript{th} Hô Quang Đỉnh}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-
+\IEEEauthorblockA{\textit{Trường đại học Công nghệ thông tin} \\
+\textit{IS403.021}\\
+21520190@gm.uit.edu.vn}
 }
 
 \maketitle
@@ -73,15 +74,15 @@ Trong quá trình nghiên cứu, chúng tôi áp dụng một loạt các mô h�
 
 
 \section{Các nghiên cứu liên quan}
-Trong lĩnh vực dự đoán giá cổ phiếu hay thị trường chứng khoán, một số nghiên cứu quan trọng đã được tiến hành trên việc áp dụng các mô hình học máy.\\
-T. Gopalakrishnan, R. Choudhary và S. Prasad, trong bài báo năm 2018 \cite{b1}, phân tích doanh số bán hàng của một siêu thị lớn và dự đoán doanh số bán hàng trong tương lai để giúp họ tăng lợi nhuận và làm cho thương hiệu của họ trở nên tốt hơn và cạnh tranh hơn theo xu hướng thị trường bằng cách tạo ra sự hài lòng cho khách hàng. Kỹ thuật được sử dụng để dự đoán doanh số bán hàng là thuật toán Hồi quy Tuyến tính. Dữ liệu doanh số bán hàng được thu thập từ năm 2011 đến 2013 và dự đoán cho năm 2014 được thực hiện. Sau đó, dữ liệu thời gian thực của năm 2014 cũng được thu thập và dữ liệu thực tế của năm 2014 đã được so sánh với dữ liệu dự đoán để tính toán độ chính xác của dự đoán. Điều này lại giúp họ thực hiện các hành động cần thiết (như đã được thảo luận sau) để tăng doanh số bán hàng của mình.\\
-Benvenuto, D., Giovanetti, M., Vassallo, L., Angeletti, S., & Ciccozzi, M. trong nghiên cứu năm 2019 \cite{b2}. Áp dụng mô hình ARIMA trên bộ dữ liệu dịch CoVID-2019.Trung bình di chuyển tích hợp hồi quy tự động (ARIMA) trên dữ liệu dịch tễ học của Johns Hopkins để dự đoán xu hướng dịch tễ học về tỷ lệ lưu hành và tỷ lệ mắc bệnh COVID-2019. Để so sánh thêm hoặc để có tầm nhìn trong tương lai, việc xác định trường hợp và thu thập dữ liệu phải được duy trì theo thời gian thực.\\
-Trong vài thập kỷ qua, nhiều khu vực đô thị trên thế giới đã phải hứng chịu tình trạng ô nhiễm không khí nghiêm trọng và các mối nguy hiểm sức khỏe đi kèm với nó, khiến việc thu thập chất lượng không khí theo thời gian thực và dự báo chất lượng không khí trở nên rất quan trọng để thực hiện các biện pháp phòng ngừa và khắc phục.Belavadi, S. V., Rajagopal, S., Ranjani, R., & Mohan, R. trong bài viết năm 2020.\cite{b3} Do thành tích đã được chứng minh là thành công với dữ liệu chuỗi thời gian,Long Short-Term Memory (LSTM) Recurrent Neural Network (RNN) mô hình được lựa chọn để thực hiện nhiệm vụ dự báo chất lượng không khí. Bài viết này phân tích một cách nghiêm túc hiệu suất của mô hình ở hai khu vực có sự khác biệt đáng kể về sự thay đổi theo thời gian của chất lượng không khí. Khi các biến thể này tăng lên, mô hình sẽ bị suy giảm hiệu suất, đòi hỏi phải có mô hình thích ứng.\\
-Dự đoán năng lượng gió hiệu quả sẽ tạo điều kiện thuận lợi cho mục tiêu phát triển bền vững lâu dài của thế giới. Tuy nhiên, nhược điểm của gió với tư cách là nguồn năng lượng nằm ở tính biến thiên cao, dẫn đến việc nghiên cứu dự báo năng lượng gió gặp nhiều thách thức. Kisvari, A., Lin, Z., & Liu, X. vào năm 2021 đã có nghiên cứu \cite{b4} dự báo năng lượng gió bằng cách tích hợp tiền xử lý và lấy mẫu lại dữ liệu, phát hiện và xử lý các điểm bất thường, kỹ thuật tính năng và điều chỉnh siêu tham số dựa trên các mô hình học sâu định kỳ có kiểm soát, được thực hiện một cách có hệ thống. được trình bày lần đầu tiên. Bên cạnh đó, mạng lưới thần kinh học sâu mới của Gated Recurrent Unit (GRU) đã được phát triển thành công và được so sánh nghiêm túc với thuật toán Bộ nhớ ngắn hạn dài (LSTM). Ban đầu, 12 tính năng được thiết kế thành mô hình dự đoán, đó là tốc độ gió ở bốn độ cao khác nhau, nhiệt độ máy phát điện và nhiệt độ hộp số. Kết quả mô phỏng cho thấy, về mặt dự báo năng lượng gió, phương pháp đề xuất có thể đạt được độ chính xác cao với chi phí tính toán thấp hơn. Cũng có thể kết luận rằng GRU vượt trội hơn LSTM về độ chính xác dự đoán trong tất cả các thử nghiệm được quan sát, mang lại quy trình đào tạo nhanh hơn và ít nhạy cảm hơn với nhiễu trong bộ dữ liệu Kiểm soát giám sát và Thu thập dữ liệu (SCADA) đã sử dụng.\\
-Hiện nay, ùn tắc giao thông đã trở thành một phần trong cuộc sống hàng ngày của người dân ở các thành phố trên khắp thế giới và tác động tiêu cực đến cuộc sống của người dân, ví dụ như mất thêm thời gian đi lại, tăng lượng khí thải, v.v. Để giảm thiểu tác động của tắc nghẽn giao thông đối với cuộc sống của chúng ta, những nỗ lực nghiên cứu chuyên sâu đã được đề xuất về vấn đề này.\cite{b5}
-Nền kinh tế Ấn Độ và sản xuất ngũ cốc có mối liên hệ chặt chẽ với sự phân bố không gian và lượng mưa trong thời kỳ gió mùa mùa hè (tháng 6 đến tháng 9). Nhiều nghiên cứu đã đi sâu vào các phương pháp mô hình hóa để dự báo lượng mưa gió mùa mùa hè ở Ấn Độ. K. V. Narasimha Murthy, G. Kishore Kumar & P. N. Sen đã sử dụng dữ liệu lượng mưa hàng tháng trong 72 năm (1950–2021) để phân tích, lập mô hình và dự đoán gió mùa ở Tây Bắc Ấn Độ bằng Mô hình tuyến tính động (DLM).\cite{b6}\\
-C. Hecht; R. Aghsaee; F. Schwinger; J. Figgener; M. Jarke; D. U. Sauer đã Dự đoán ngắn hạn về tính khả dụng của trạm sạc xe điện bằng cách sử dụng mô hình học máy xếp tầng. \cite{b7}\\
-Vào năm 2023, G Kalpana - Mukt Shabd Journal dự báo chuỗi thời gian và mô hình hóa chuỗi cung ứng nhu cầu thực phẩm dựa trên phân tích hồi quy.\cite{b8} \\
+Trong lĩnh vực dự đoán giá cổ phiếu , nhiều nghiên cứu quan trọng đã được tiến hành với các mô hình học máy. Dự đoán giá cổ phiếu trong tương lai là một nhiệm vụ khó khăn do sự ngẫu nhiên cao trong biến động giá. Nghiên cứu của C. C. Emioma1 và S. O. Edeki1 nhằm sử dụng một thuật toán học máy để ước tính giá đóng cửa của cổ phiếu từ một tập dữ liệu, nhằm tăng độ chính xác trong việc dự đoán giá cổ phiếu. Mô hình này được dự định sử dụng như một hướng dẫn giao dịch trong ngày. Thuật toán được sử dụng là mô hình hồi quy tuyến tính theo phương pháp bình phương nhỏ nhất. Nó sử dụng biến phụ thuộc là giá đóng cửa của cổ phiếu và biến độc lập là ngày mà mỗi giá cổ phiếu được ghi nhận. \cite{b1}. 
+Cũng trong lĩnh vực dự đoán giá cổ phiếu, Chris Kuo/Dr. Dataman đã sử đụng cả ba mô hình RNN/LSTM/GRU áp dụng ARIMA để dự đoán được giá cổ phiếu\cite{b2}. Và với mô hình khác như Random Forest trong nghiên cứu của các trang blog\cite{b3}.\\
+Ta thấy được thị trường tài chính có vai trò quan trọng trong sự phát triển của xã hội hiện đại. Họ cho phép triển khai các nguồn lực kinh tế. Những thay đổi về giá cổ phiếu phản ánh những thay đổi trên thị trường. Trong nghiên cứu tập trung vào việc dự đoán giá cổ phiếu bằng mô hình học sâu Jialin Liu, Fei Chao, Yu-Chen Lin và Chih-Min Lin đã sử dụng các mô hình học sâu FCN -LSTM để dự đoán giá cổ phiếu\cite{b4}.
+Và trong báo cáo khác của Hassan Ismail Fawaz, Germain Forestier, Jonathan Weber, Lhassane Idoumghar, Pierre-Alain Muller về việc sử dụng học sâu để dự đoán cho chuỗi thời gian \cite{b5}.\\
+Một số nghiên cứu sử dụng các mô hình trong vòng bốn mươi năm qua, sự phát triển của các mô hình Độ dẻo Tinh thể (Crystal Plasticity - CP) và các thuật toán của chúng (CP-FEM) đã chuyển hóa kiến thức về cơ học vật lý ở mức hệ thống trượt thành các mô hình cấu tạo cho các vật liệu đơn và đa tinh thể. Các nghiên cứu gần đây đã tập trung vào việc tăng hiệu suất tính toán của CP-FEM thông qua thuật toán Biến đổi Fourier Nhanh (FFT) và sử dụng mạng nơ-ron hồi quy (RNN) để mô phỏng phản ứng ứng suất-biến dạng của vật liệu. Các mô hình này giúp tăng tốc độ tính toán đáng kể mà vẫn duy trì độ chính xác của các mô phỏng tiêu chuẩn\cite{b6}.\\
+Trong nghiên cứu khác dự đoán chính xác thời gian di chuyển là một tính năng quan trọng để hỗ trợ Hệ thống Giao thông Thông minh (ITS). Tuy nhiên, tính phi tuyến của của Semin Kwak và Nikolas Geroliminisnày \cite{b7} đề xuất sử dụng mô hình tuyến tính động (DLM) để xấp xỉ các trạng thái giao thông phi tuyến. Khác với mô hình hồi quy tuyến tính tĩnh, DLM giả định rằng các tham số của nó thay đổi theo thời gian. 
+
+
+
 \section{Bộ dữ liệu}
 
 \subsection{Nguồn dữ liệu}
@@ -141,9 +142,9 @@ Change \%:
 \begin{table}[H]
   \centering
   \caption{Heating Oi, Crude Oil WTI, Gasoline RBOB’s Descriptive Statistics}
-\begin{tabular}{|>{\columncolor{red!20}}c|c|c|c|}
+\begin{tabular}{|>{}c|c|c|c|}
     \hline
-     \rowcolor{red!20} & HT Oil& WTI& RBOB\\ \hline
+      & HT Oil& WTI& RBOB\\ \hline
      Count & 1320
 & 1322
 & 1550
@@ -263,11 +264,11 @@ Trong quá trình nghiên cứu và phân tích dữ liệu, nhóm đã sử d�
 Những tỷ lệ này cho phép đánh giá tác động của các chỉ số liên quan đến hiệu suất của mô hình bằng cách xem xét phân phối dữ liệu trong mỗi tập. Tỷ lệ phổ biến 7:3 phân bổ 70\% cho huấn luyện và 30\% cho kiểm tra, tạo ra một sự cân bằng giữa cung cấp đủ dữ liệu huấn luyện, đồng thời đảm bảo sự khác nhau giữa các tập cho việc điều chỉnh và đánh giá. Một lựa chọn khác là tỷ lệ 8:2, ưu tiên tập huấn luyện 80\%, có lợi cho các mô hình phức tạp yêu cầu một tập dữ liệu huấn luyện lớn hơn. Hoặc một cách phân tích thận trọng dùng tỷ lệ 9:1 có thể được ưa chuộng, khi xử lý một tập dữ liệu lớn và một mô hình đơn giản. Tỷ lệ này đảm bảo dữ liệu huấn luyện và vẫn đủ dữ liệu một tập kiểm tra để đánh giá hiệu suất.
 
 \subsection{Đánh giá mô hình}
-RMSE được tính bằng cách lấy căn bậc hai của trung bình cộng bình phương của các sai số (khác biệt giữa giá trị dự đoán và giá trị thực tế) giữa một loạt các điểm dữ liệu. RMSE càng nhỏ thì mô hình dự đoán càng chính xác.
+RMSE được tính bằng cách lấy căn bậc hai của trung bình cộng bình phương của các sai số (khác biệt giữa giá trị dự đoán và giá trị thực tế) giữa một loạt các điểm dữ liệu. RMSE càng nhỏ thì mô hình dự đoán càng chính xác [8].
 
-MAPE được tính bằng cách lấy trung bình cộng của tỷ lệ tuyệt đối giữa sai số tuyệt đối và giá trị thực tế cho mỗi điểm dữ liệu, sau đó nhân 100 để biểu diễn dưới dạng phần trăm.
+MAPE được tính bằng cách lấy trung bình cộng của tỷ lệ tuyệt đối giữa sai số tuyệt đối và giá trị thực tế cho mỗi điểm dữ liệu, sau đó nhân 100 để biểu diễn dưới dạng phần trăm [9].
 
-MAE được tính bằng cách lấy trung bình cộng của các giá trị tuyệt đối của sai số giữa giá trị dự đoán và giá trị thực tế.
+MAE được tính bằng cách lấy trung bình cộng của các giá trị tuyệt đối của sai số giữa giá trị dự đoán và giá trị thực tế [10].
 
 \[RMSE=\sqrt{\sum_{i=1}^{n} \frac{(\hat{y_i}-y_i )^2}{n} }\]\\
 
@@ -276,14 +277,9 @@ MAE được tính bằng cách lấy trung bình cộng của các giá trị t
 \[MAE = \frac{1}{n} \sum_{i=1}^{n} \left| y_i - \hat{y_i} \right|]\\
 
 Trong đó: \\
-	\indent\textbullet\ \(n\) là số lượng các điểm dữ liệu.
- 
-	\indent\textbullet\ \(y_i\)  là các giá trị thực tế của điểm dữ liệu thứ i.
- 
-	\indent\textbullet\ \(\hat{y_i}\) là các giá trị dự đoán của điểm dữ liệu thứ i.
-
-
-
+	\indent\textbullet\ \(n\) là số lượng các điểm dữ liệu.\\
+	\indent\textbullet\ \(y_i\)  là các giá trị thực tế của điểm dữ liệu thứ i.\\
+	\indent\textbullet\ \(\hat{y_i}\) là các giá trị dự đoán của điểm dữ liệu thứ i.\\
 \section{Phương pháp thống kê}
 \subsection{Linear Regression}
 Phân tích hồi quy là một phân tích thống kê để xác định xem quan hệ các biến độc lập quy định các biến phụ thuộc như thế nào.\\
@@ -353,24 +349,24 @@ Trong đó, điều kiện dừng của việc chọn \textbf{\textit{p}} là: $
     \centering
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Crude Oil WTI 8-2.png} 
-    \caption{Crude Oil WTI 8:2}
+    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Crude Oil WTI 7_3.png} 
+    \caption{Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
     \hfill
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Gasoline RBOB 9-1.png} 
-    \caption{Gasoline RBOB 9:1}
+    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Gasoline RBOB 7_3.png} 
+    \caption{Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
     \hfill
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Heating Oil 9-1.png}
-    \caption{Heating Oil 9:1}
+    \includegraphics[width=0.8\textwidth]{Picture/ARIMA/Heating Oil 7_3.png}
+    \caption{Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
 \end{figure}
@@ -634,8 +630,13 @@ Trong đó:
 - \( o_t \) là đầu ra của cổng đầu ra
 
 - \( \tilde{c}_t \) là giá trị ứng viên mới cho trạng thái ô
+\\
 
-Trong các phương trình (1) đến (6), các biến đầu vào \( x_t \) và \( h_{t-1} \) đi vào bốn cổng được gán nhãn là \( f_t \), \( i_t \),\( c_t \), \( o_t \). Đối với các cổng đầu vào và đầu ra, các trọng số tương ứng với mỗi cổng được tính toán, và hàm sigmoid được sử dụng làm hàm kích hoạt. Hàm sigmoid lấy giá trị giữa 0 và 1. Nếu giá trị đầu ra là 1, giá trị tương ứng nên được giữ lại, nhưng nếu giá trị đầu ra là 0, giá trị tương ứng nên bị loại bỏ hoàn toàn. Đối với cổng còn lại, cổng điều chế đầu vào, hàm tanh được sử dụng để xác định lượng thông tin mới cần được phản ánh trong trạng thái ô. Cuối cùng, thông tin cần được phản ánh trong \( c_t \) được tính bằng cách cộng nhân điểm của các giá trị \( i_t \) đã tính toán trước đó và các giá trị được tính từ cổng quên, giá trị trạng thái ô trước đó, và nhân điểm của \( c_t \). Cuối cùng, để tính giá trị đầu ra \( h_t \), nhân điểm được thực hiện trên giá trị được tính từ cổng đầu ra và giá trị thu được bằng cách thêm hàm tanh vào giá trị trạng thái ô đã tính toán.
+Trong các phương trình (1) đến (6), các biến đầu vào \( x_t \) và \( h_{t-1} \) đi vào bốn cổng được gán nhãn là \( f_t \), \( i_t \),\( c_t \), \( o_t \). Đối với các cổng đầu vào và đầu ra, các trọng số tương ứng với mỗi cổng được tính toán, và hàm sigmoid được sử dụng làm hàm kích hoạt.
+
+Hàm sigmoid lấy giá trị giữa 0 và 1. Nếu giá trị đầu ra là 1, giá trị tương ứng nên được giữ lại, nhưng nếu giá trị đầu ra là 0, giá trị tương ứng nên bị loại bỏ hoàn toàn. Đối với cổng còn lại, cổng điều chế đầu vào, hàm tanh được sử dụng để xác định lượng thông tin mới cần được phản ánh trong trạng thái ô. Cuối cùng, thông tin cần được phản ánh trong \( c_t \) được tính bằng cách cộng nhân điểm của các giá trị \( i_t \) đã tính toán trước đó và các giá trị được tính từ cổng quên, giá trị trạng thái ô trước đó, và nhân điểm của \( c_t \). 
+
+Cuối cùng, để tính giá trị đầu ra \( h_t \), nhân điểm được thực hiện trên giá trị được tính từ cổng đầu ra và giá trị thu được bằng cách thêm hàm tanh vào giá trị trạng thái ô đã tính toán.
 
 
 
@@ -756,16 +757,11 @@ Fully Convolutional Neural Networks (FCN) lần đầu tiên được đề xu�
 \subsection{Recurrent Neural Network (RNN)}
 Recurrent Neural Network (RNN) là một kiến trúc mạng nơ-ron nhân tạo trong Deep learning, được thiết kế để xử lý dữ liệu tuần tự hoặc chuỗi dữ liệu. RNN có khả năng lưu giữ trạng thái trước đó của một chuỗi đầu vào và sử dụng thông tin đó để tính toán đầu ra tiếp theo.
 
- RNN có một số ưu điểm để dự đoán chuỗi thời gian (time-series). Chúng có thể xử lý dữ liệu theo chuỗi có độ dài khác nhau, nắm bắt hiệu quả các phụ thuộc lâu dài và mô hình thời gian. RNN dễ dàng thích ứng với các khoảng thời gian không đều nhau hay các tác vụ dự báo khác nhau với các chuỗi input và output có độ dài khác nhau.
-\subsection{Recurrent Neural Network (RNN)}
-Recurrent Neural Network (RNN) là một kiến trúc mạng nơ-ron nhân tạo trong Deep learning, được thiết kế để xử lý dữ liệu tuần tự hoặc chuỗi dữ liệu. RNN có khả năng lưu giữ trạng thái trước đó của một chuỗi đầu vào và sử dụng thông tin đó để tính toán đầu ra tiếp theo.
-
+RNN có một số ưu điểm để dự đoán chuỗi thời gian (time-series). Chúng có thể xử lý dữ liệu theo chuỗi có độ dài khác nhau, nắm bắt hiệu quả các phụ thuộc lâu dài và mô hình thời gian. RNN dễ dàng thích ứng với các khoảng thời gian không đều nhau hay các tác vụ dự báo khác nhau với các chuỗi input và output có độ dài khác nhau.
 Công thức mô hình trạng thái ẩn tại thời điểm \( t \):
 \[ H_t = f(U \cdot X_t + W \cdot H_{t-1} + b) \]
-
 Biết được trạng thái ẩn \( H_t \) của thời điểm hiện tại, công thức tính toán giá trị đầu ra dự đoán \( Y_t \) của RNN tại thời điểm hiện tại như sau: 
 \[ Y_t = g(V \cdot H_t + c) \]
-
 Trong đó:
 \begin{itemize}
     \item \( X_t \) là đầu vào tại thời điểm \( t \)
@@ -777,16 +773,12 @@ Trong đó:
     \item \( b \) và \( c \) là vector độ lệch (bias)
     \item \( f \) và \( g \) là hàm kích hoạt
 \end{itemize}
-
-
-RNN sử dụng các thuật toán tối ưu hoá (Optimization algorithm) để tối thiểu hóa độ lỗi (loss) bằng cách cập nhật lại các tham số của mạng (bao gồm các ma trận trọng số và vector độ lệch) thông qua việc tính toán đạo hàm (Gradient) của hàm mất mát (Loss function) theo các tham số trên và di chuyển theo hướng ngược lại với gradient theo một tỷ lệ học (learning rate) xác định.
-
+ RNN sử dụng các thuật toán tối ưu hoá (Optimization algorithm) để tối thiểu hóa độ lỗi (loss) bằng cách cập nhật lại các tham số của mạng (bao gồm các ma trận trọng số và vector độ lệch) thông qua việc tính toán đạo hàm (Gradient) của hàm mất mát (Loss function) theo các tham số trên và di chuyển theo hướng ngược lại với gradient theo một tỷ lệ học (learning rate) xác định.
 Quá trình này được lặp lại cho tất cả các chuỗi đầu vào trong quá trình huấn luyện mạng RNN.
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.3\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Crude_73.png} 
+    \centering    \includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Crude_73.png} 
     \caption{Crude Oil WTI 7:3}
     \label{fig:1}
     \end{minipage}
@@ -794,7 +786,49 @@ Quá trình này được lặp lại cho tất cả các chuỗi đầu vào tr
     \\
     \begin{minipage}{0.3\textwidth} 
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Gasoline_73.png} 
+\includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Gasoline_73.png} 
+    \caption{Gasoline RBOB 7:3}
+    \label{fig:2}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth}
+    \centering    \includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Heating_73.png}
+    \caption{Heating Oil 7:3}
+    \label{fig:3}
+    \end{minipage}
+\end{figure}
+
+\subsection{Additive Recurrent Neural Network (AddRNN)}
+AddRNN là một phần mở rộng của Mạng nơ-ron hồi quy tiêu chuẩn (RNN), được thiết kế đặc biệt để giải quyết các thách thức do dữ liệu tuần tự đặt ra. Điểm đặc trưng chính của AddRNN là tính chất cộng thêm, trong đó đầu ra của mỗi đơn vị hồi quy là sự tích lũy của các trạng thái trước đó. Cách tiếp cận cộng thêm này giúp nắm bắt các phụ thuộc dài hạn hiệu quả hơn so với RNN truyền thống.
+
+Sự đổi mới cốt lõi của AddRNN nằm ở cơ chế cộng thêm của nó. Thay vì đơn giản cập nhật trạng thái ẩn tại mỗi thời điểm, AddRNN thêm thông tin mới vào trạng thái trước đó, cho phép nó duy trì các phụ thuộc dài hạn mà không gặp rủi ro gradient biến mất. Quy tắc cập nhật cộng thêm có thể được mô tả như sau:
+\[ H_t = H_{t-1} + f(U \cdot X_t + W \cdot H_{t-1} + b)\]
+Trong đó: 
+\begin{itemize}
+    \item \( X_t \) là đầu vào tại thời điểm \( t \)
+    \item \( H_t \) là trạng thái ẩn tại thời điểm \( t \)
+    \item \( H_{t-1} \) là trạng thái ẩn tại thời điểm \( t - 1 \)
+    \item \( U \) là ma trận trọng số liên kết giữa đầu vào và trạng thái ẩn
+    \item \( W \) là ma trận trọng số liên kết giữa trạng thái ẩn tại thời điểm trước đó và trạng thái ẩn tại thời điểm hiện tại
+    \item \( b \) là vector độ lệch (bias)
+    \item \( f \) là hàm kích hoạt
+\end{itemize}
+Công thức này đảm bảo rằng trạng thái ẩn \(H_t\) là tổng cộng dồn của tất cả các trạng thái ẩn trước đó và đầu vào hiện tại. Sự tích lũy này cho phép mô hình duy trì và truyền tải thông tin quan trọng qua các chuỗi dài hơn. 
+
+Sự khác biệt chính giữa Mạng nơ-ron hồi quy thông thường (RNN) và Mạng nơ-ron hồi quy cộng thêm (AddRNN) nằm ở cách chúng xử lý các cập nhật trạng thái ẩn. Trong RNN thông thường, trạng thái ẩn tại mỗi thời điểm được thay thế hoàn toàn, điều này có thể gây khó khăn trong việc nắm bắt các phụ thuộc dài hạn do vấn đề gradient biến mất. Ngược lại, AddRNN sử dụng cơ chế cập nhật cộng thêm, trong đó trạng thái ẩn là tổng cộng dồn của tất cả các trạng thái trước đó và đầu vào hiện tại. Cách tiếp cận này cải thiện luồng gradient, giảm nguy cơ gradient biến mất và tăng cường khả năng nắm bắt các phụ thuộc dài hạn. 
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+    \centering    \includegraphics[width=0.8\textwidth]{Picture/AddRNN/Crude Oil WTI 7_3 AddRNN.png} 
+    \caption{Crude Oil WTI 7:3}
+    \label{fig:1}
+    \end{minipage}
+    \hfill
+    \\
+    \begin{minipage}{0.3\textwidth} 
+    \centering
+\includegraphics[width=0.8\textwidth]{Picture/AddRNN/Gasoline RBOB 7_3 AddRNN.png} 
     \caption{Gasoline RBOB 7:3}
     \label{fig:2}
     \end{minipage}
@@ -802,54 +836,137 @@ Quá trình này được lặp lại cho tất cả các chuỗi đầu vào tr
     \\
     \begin{minipage}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{Picture/RNN/RNN_Heating_73.png}
+\includegraphics[width=0.8\textwidth]{Picture/AddRNN/Heating Oil 7_3 AddRNN.png}
     \caption{Heating Oil 7:3}
     \label{fig:3}
     \end{minipage}
 \end{figure}
 
-\section*{Acknowledgment}
 
-The preferred spelling of the word ``acknowledgment'' in America is without 
-an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
-G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
-acknowledgments in the unnumbered footnote on the first page.
+\section*{KẾT QUẢ THỰC NGHIỆM}
 
-\section*{References}
+Kết quả đánh giá thực nghiệm trên 3 bộ dữ liệu được thể hiện ở Bảng II bên dưới. Ghi nhận lại các giá trị độ đo RMSE, MAPE, MAE được làm tròn tới hai chữ số thập phân của các mô hình  trên tập test của 3 bộ dữ liệu về giá Crude OIL, Gasoline RBOB, Heating OIL theo 3 tỉ lệ là 7:3, 8:2, 9:1.
 
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
+Xét giá trị nhỏ nhất khi chưa làm tròn của mỗi độ đo RMSE, MAPE và MAE được đánh dấu bằng màu đỏ, các chỉ số độ đo càng thấp thể hiện các mô hình có giá trị tốt nhất trên từng bộ dữ liệu và từng tỉ lệ train.
 
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
+Trong số 10 mô hình được xem xét, mô hình Gated Recurrent Unit (GRU) đạt được nhiều giá trị nhất nhất trong bộ dữ liệu Heating OIL ở cả ba tỉ lệ train
+. Ngoài ra, GRU cũng chiếm ưu thế với nhiều giá trị nhỏ nhất trong các bộ dữ liệu khác như Gasoline RBOB với tỉ lệ train
+8:2 và 9:1, cũng như đạt giá trị MAPE nhỏ nhất trong bộ dữ liệu Crude OIL.
 
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
+Mặt khác, mô hình Fast Fourier Transform Forecasting Model (FFT) cho kết quả tốt nhất trong bộ dữ liệu Crude OIL với các giá trị độ đo RMSE và MAE nhỏ nhất ở cả ba tỉ lệ train.
 
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
+Trong trường hợp của RNN chỉ cho kết quả tốt nhất ở hai độ đo RMSE và MAE trong dataset duy nhất với tỉ lệ train:test (7:3).
 
+Tổng Kết lại nhóm nhận thấy được có hai model tốt nhất để thực hiện dự đoán giá của nhiên liệu là Gated Recurrent Unit (GRU) và Fast Fourier Transform Forecasting Model (FFT).
+\section*{KẾT LUẬN}
 
-\begin{thebibliography}{00}
-\bibitem{b1} T. Gopalakrishnan, R. Choudhary, and S. Prasad, "Prediction of Sales Value in Online shopping using Linear Regression," in 2018 4th International Conference on Computing Communication and Automation (ICCCA), 2018, pp. 1-6.
-\bibitem{b2} Benvenuto, D., Giovanetti, M., Vassallo, L., Angeletti, S., & Ciccozzi, M. (2020). Application of the ARIMA model on the COVID-2019 epidemic dataset. Data in brief, 29, 105340.
-\bibitem{b3} Belavadi, S. V., Rajagopal, S., Ranjani, R., & Mohan, R. (2020). Air quality forecasting using LSTM RNN and wireless sensor networks. Procedia Computer Science, 170, 241-248.
-\bibitem{b4} Kisvari, A., Lin, Z., & Liu, X. (2021). Wind power forecasting–A data-driven method along with gated recurrent neural network. Renewable Energy, 163, 1895-1909.
-\bibitem{b5} P Sun, N AlJeri, A Boukerche - 2018. A fast vehicular traffic flow prediction scheme based on fourier and wavelet analysis.
-\bibitem{b6} K. V. Narasimha Murthy, G. Kishore Kumar & P. N (2024). Sen Dynamic Linear Modeling for Characterizing and Predicting the Patterns of Summer Monsoon Rainfall in Northwest India.
-\bibitem{b7} C. Hecht; R. Aghsaee; F. Schwinger; J. Figgener; M. Jarke; D. U. Sauer (2022). Short-term prediction of electric vehicle charging station availability using cascaded machine learning models.
-.
-\bibitem{b8}  Neelamadhab Padhy, Srinivasarao Dharmireddi, Dushmanta Kumar Padhy, R. Saikrishna & K. Srujan Raju (2023).Stock Market Prediction Performance Analysis by Using Machine Learning Regressor Techniques.
+Thông qua bài báo cáo này, chúng tôi đã tiến hành nghiên cứu về việc sử dụng các mô hình máy học và học sâu để phân tích chuỗi thời gian nhằm dự đoán giá của các loại nhiên liệu. Chúng tôi sử dụng các mô hình như Linear Regression, ARIMA, FFT, Random Forest, DLM, LSTM, RNN, GRU, FCN và AddRNN trên ba bộ dữ liệu khác nhau để đưa ra đánh giá các mô hình và dự đoán giá trong tương lai. Việc này chỉ ra được sự phù hợp trong việc dự đoán giá của nhiên liệu của mô hình dựa trên mạng nơ-ron hồi quy và kỹ thuật chuỗi thời gian.
 
+Trong quá trình nghiên cứu việc gặp khó khăn là không thể tránh khỏi. Việc khó khăn nhất chính là sự phức tạp biến động mạnh của thị trường. Làm tăng độ khó của việc dự đoán giá nhiên liệu.
+
+Trong tương lai việc cải tiến các mô hình nhằm tối ưu nhất trong việc dự đoán. Chúng tôi có thể sẽ áp dụng các công nghệ nghiên cứu mới hoặc các mô hình mới khác nhau nhằm tăng cao độ chính xác và tin cậy cho dự đoán.
+\newpage
+\begin{longtable}{|l|l|*{9}{>{\centering\arraybackslash}m{1.2cm}|}} % Adjust width as needed
+    \caption{Kết quả đánh giá 10 mô hình dự đoán thông qua các độ đo } \label{tab:dataset-comparison} \\
+    \hline
+    Mô Hình & Độ đo & \multicolumn{3}{c|}{Crude OIL} & \multicolumn{3}{c|}{Gasoline RBOB} & \multicolumn{3}{c|}{Heating OIL} \\ \cline{3-11}
+    && 7:3 & 8:2 & 9:1 & 7:3 & 8:2 & 9:1 & 7:3 & 8:2 & 9:1 \\ \hline
+    \endfirsthead
+    \endhead
+    \hline    
+    \multirow{3}{*}{\textbf{LN}} & RMSE & 25.40 & 20.25 & 17.07 & 0.38 & 0.43 & 0.45 & 0.97 & 0.90 & 0.83 \\ \cline{2-11}
+    & MAPE & 30.83 & 25.09 & 21.78 & 12.55 & 15.62 & 17.71 & 32.56 & 31.87 & 30.77 \\ \cline{2-11}
+    & MAE & 23.75 & 19.27 & 16.73 & 0.29 & 0.36 & 0.40 & 0.87 & 0.84 & 0.81 \\ \hline
+    \multirow{3}{*}{\textbf{FCN}} & RMSE & 2.94 & 1.96 & 1.64 & 0.10 & 0.08 & 0.07 & 0.11 & 0.06 & 0.06 \\ \cline{2-11}
+    & MAPE & 2.98 & 1.97 & 1.63 & 3.27 & 2.45 & 2.19 & 4.08 & 1.73 & 1.84 \\ \cline{2-11}
+    & MAE & 2.34 & 1.56 & 1.27 & 0.08 & 0.06 & 0.05 & 0.11 & 0.05 & 0.05 \\ \hline
+    \multirow{3}{*}{\textbf{ARIMA}} & RMSE & 12.53 & 9.50 & 4.38 & 0.23 & 0.24 & 0.32 & 0.90 & 0.49 & 0.29 \\ \cline{2-11}
+    & MAPE & 15.08 & 9.39 & 4.60 & 7.75 & 8.73 & 10.09 & 31.57 & 13.87 & 10.12 \\ \cline{2-11}
+    & MAE & 11.38 & 7.72 & 3.57 & 0.18 & 0.21 & 0.26 & 0.84 & 0.40 & 0.26 \\ \hline
+    \multirow{3}{*}{\textbf{AddRNN}} & RMSE & 1.74 & 2.24 & 1.36 & 0.06 & 0.05 & 0.05 & 0.06 & {0.05} & {0.04} \\ \cline{2-11}
+    & MAPE & 1.66 & 2.50 & 1.44 & 1.82 & 1.64 & 1.60 & {1.60} & {1.43} & {1.00} \\ \cline{2-11}
+    & MAE & 1.28 & 1.97 & 1.12 & 0.04 & 0.04 & 0.04 & {0.05} & {0.04} & {0.03} \\ \hline
+    \multirow{3}{*}{\textbf{RNN}} & RMSE & 2.30 & 1.30 & 1.33 & \textcolor{red}{0.06} & 0.06 & 0.06 & 0.06 & 0.08 & 0.04 \\ \cline{2-11}
+    & MAPE & 2.56 & 1.25 & 1.39 & 1.77 & 1.71 & 1.94 & 1.66 & 2.55 & 1.13 \\ \cline{2-11}
+    & MAE & 1.98 & 0.98 & 1.09 & \textcolor{red}{0.04} & 0.04 & 0.05 & 0.05 & 0.07 & 0.03 \\ \hline
+    \multirow{3}{*}{\textbf{FFT}} & RMSE & \textcolor{red}{0.20} & \textcolor{red}{0.16} & \textcolor{red}{0.14} & 0.41 & 0.37 & 0.33 & 0.28 & 0.21 & 0.13 \\ \cline{2-11}
+    & MAPE & 24.98 & 19.51 & 16.34 & 69.43 & 61.62 & 52.51 & 53.45 & 39.94 & 27.57 \\ \cline{2-11}
+    & MAE & \textcolor{red}{0.18} & \textcolor{red}{0.14} & \textcolor{red}{0.12} & 0.40 & 0.35 & 0.30 & 0.26 & 0.19 & 0.12 \\ \hline
+    \multirow{3}{*}{\textbf{GRU}} & RMSE & 1.32 &	1.25&	0.99&	0.06&	\textcolor{red}{0.05}&	\textcolor{red}{0.05}&	\textcolor{red}{0.05}&	\textcolor{red}{0.046}&\textcolor{red}{0.04}
+ \\ \cline{2-11}
+    & MAPE & \textcolor{red}{1.29}&	\textcolor{red}{1.23}&\textcolor{red}{0.93}&	\textcolor{red}{1.63}&	\textcolor{red}{1.45}&	\textcolor{red}{1.22}&\textcolor{red}{1.34}&\textcolor{red}{1.15}&	\textcolor{red}{1.09}
+ \\ \cline{2-11}
+    & MAE & 0.99&	0.96&	0.72&	0.04&	\textcolor{red}{0.04}&	\textcolor{red}{0.03}&	\textcolor{red}{0.04}&	\textcolor{red}{0.03}&	\textcolor{red}{0.03}
+ \\ \hline
+    \multirow{3}{*}{\textbf{DLM}} & RMSE & 39.14&	59.64&34.73&	1.66&	1.79&	0.72&	7.36&	2.1&	0.87
+ \\ \cline{2-11}
+    & MAPE & 46.54&	66.34&36.56&	59.14&	63.44&	22.91&	244.05&	69.95&	28.83
+ \\ \cline{2-11}
+    & MAE & 35.99&	52.7&	29.18&	1.43&	1.57&	0.59&6.62&	1.92&	0.75
+ \\ \hline
+    \multirow{3}{*}{\textbf{LSTM}} & RMSE & 2.45 & 2.06 & 1.33 & 0.06 & 0.05 & 0.05 & {0.06} & 0.06 & 0.07 \\ \cline{2-11}
+    & MAPE & 2.46 & 2.03 & 1.33 & 1.81 & 1.69 & {1.41} & 1.70 & 1.53 & 2.26 \\ \cline{2-11}
+    & MAE & 1.89 & 1.58 & 1.03 & 0.04 & 0.04 & {0.03} & 0.05 & 0.04 & 0.06 \\ \hline
+    \multirow{3}{*}{\textbf{RF}} & RMSE & 2.02 & 1.49 & 1.26 & 0.09 & 0.07 & 0.07 & 0.22 & 0.07 & 0.05 \\ \cline{2-11}
+    & MAPE & 1.96 & 1.46 & {1.27} & 2.80 & 2.35 & 2.03 & 5.95 & 1.86 & 1.36 \\ \cline{2-11}
+    & MAE & 1.53 & 1.15 & 0.99 & 0.07 & 0.06 & 0.05 & 0.17 & 0.05 & 0.04 \\ \hline
+\end{longtable}
+\section*{Lời cảm ơn}
+Chúng tôi xin gửi lời cảm ơn chân thành đến PGS. TS. Nguyễn Đình Thuân và Kỹ sư Nguyễn Minh Nhựt vì sự hướng dẫn trong quá trình thực hiện bài báo này. Sự chỉ dẫn chuyên môn và kiến thức sâu rộng của họ đã giúp chúng tôi nắm vững kỹ thuật phân tích chuỗi thời gian và dự đoán giá cổ phiếu.\\
+
+Chúng tôi cũng cảm ơn các thành viên trong nhóm nghiên cứu vì sự hợp tác và hỗ trợ, tạo nên một môi trường làm việc tích cực và sáng tạo. Những đóng góp và thảo luận của nhóm đã giúp bài báo hoàn thiện hơn.\\
+
+Cuối cùng, chúng tôi cảm ơn cả những người đã hỗ trợ và đóng góp vào thành công của bài báo này, góp phần quan trọng vào lĩnh vực nghiên cứu dự đoán giá cổ phiếu. Chúng tôi hy vọng công trình này sẽ tiếp tục được phát triển và ứng dụng rộng rãi.
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\begin{thebibliography}
+    {}
+    \bibitem{b1} C. C. Emioma1 \& S. O. Edeki1 (2020) "Stock price prediction using machine learning on least-squares linear regression basis"
+    \bibitem{b2} Chris Kuo/Dr. Dataman (2020) "A Technical Guide on RNN/LSTM/GRU for Stock Price Prediction."
+    \bibitem{b3} B/O Trading Blog (2023) "Using the Random Forest ML Algorithm for Stock Price Prediction (Python Tutorial)"
+    \bibitem{b4} Jialin Liu, Fei Chao, Yu-Chen Lin \& Chih-Min Lin (2019) "Stock Prices Prediction using Deep Learning Models"
+    \bibitem{b5} Hassan Ismail Fawaz, Germain Forestier, Jonathan Weber, Lhassane Idoumghar \& Pierre-Alain Muller (2019) "Deep learning for time series classification: a review"
+    \bibitem{b6} Colin Bonatti, Bekim Berisha \& Dirk Mohr (2022) "From CP-FFT to CP-RNN: Recurrent neural network surrogate model of crystal plasticity"
+    \bibitem{b7} Semin Kwak \& Nikolas Geroliminis (2020) "Travel Time Prediction for Congested Freeways With a Dynamic Linear Model"
+    \bibitem{b8} Statisticshowto.com "RMSE: Root Mean Square Error"
+    \bibitem{b9} Statisticshowto.com "Mean Absolute Percentage Error (MAPE)"
+    \bibitem{b10} Statisticshowto.com "Absolute Error \& Mean Absolute Error (MAE)"
 \end{thebibliography}
-\vspace{12pt}
-
-
 \end{document}
+
